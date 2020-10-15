@@ -68,6 +68,3 @@ Then(/^correct value is prefilled in email verification placeholder in My Dashbo
 });
 
 
-//papildinat ReadMe (Glbal dependencies, npm install)
-//debug.log nevajag github
-//iztirit git lokalo cache (ja debug.log nedzesas ara no github)

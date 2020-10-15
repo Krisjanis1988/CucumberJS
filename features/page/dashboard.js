@@ -25,12 +25,12 @@ class dashboardPage extends BasePage {
     async mainPageSecondVersion() {
         await driver.findElement(By.css(currentAccountSecond)).click();
         await driver.findElement(By.linkText(manageAccount)).click();
-        await driver.wait(until.elementLocated(By.partialLinkText(myDashboardSecond)), 7000)
+        await driver.wait(until.elementLocated(By.partialLinkText(myDashboardSecond)), 10000)
         .then(element => element.click());
     }
 
     async assertEmail() {
-        const confirmEmail = await driver.wait(until.elementLocated(By.css(emailField)), 7000)
+        const confirmEmail = await driver.wait(until.elementLocated(By.css(emailField)), 10000)
         .then(element => element.getAttribute(getEmailFieldValue));
         assert.strictEqual(confirmEmail, username);
     }
