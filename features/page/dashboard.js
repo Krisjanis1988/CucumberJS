@@ -30,7 +30,7 @@ class dashboardPage extends BasePage {
     }
 
     async assertEmail() {
-        var confirmEmail = await driver.wait(until.elementLocated(By.css(emailField)), 7000)
+        const confirmEmail = await driver.wait(until.elementLocated(By.css(emailField)), 7000)
         .then(element => element.getAttribute(getEmailFieldValue));
         assert.strictEqual(confirmEmail, username);
     }

@@ -1,30 +1,36 @@
+'use strict'
+
 const { Given, When, Then } = require('@cucumber/cucumber');
-var homePage = require('./../page/home.js');
-var signPage = homePage.signUpPage();
-var passwordPage = signPage.passwordPage();
-var mainPage = passwordPage.mainPage();
-var dashboardPage = mainPage.dashboardPage();
+const homePage = require('./../page/home.js');
+const signPage = homePage.signUpPage();
+const passwordPage = signPage.passwordPage();
+const mainPage = passwordPage.mainPage();
+const dashboardPage = mainPage.dashboardPage();
 
 Given(/^I am in Main page$/, async function () {
     await homePage.navigateToTheHomePage();
 });
 
-Then(/^click on "Choose your language" button And change language to "English UK"$/, async function () {
+// Then("click on "Choose your language" button And change language to "{string}"", async function (language) {
+    Then(/^select language "(.*)" from the dropdown list$/, async function (language) {
+
     await homePage.pageIsLoaded();
     if (await homePage.firstVersion() === true) {
-        await homePage.languageFirstVersion();
+        await homePage.languageListFirst();
     } else {
-        await homePage.languageSecondVersion();
+        await homePage.languageListSecond();
     };
+    await homePage.selectLanguage(language);
     });
 
-Then(/^click on "Choose your currency" button And change currency to "U.S. dollar"$/, async function () {
+Then(/^select currency "(.*)" from the dropdown list$/, async function (currency) {
     await homePage.pageIsLoaded();
     if (await homePage.firstVersion() === true ) {
-        await homePage.currencyFirstVersion();
+        await homePage.currencyListFirst();
     } else {
-        await homePage.currencySecondVersion();
+        await homePage.currencyListSecond();
     };
+    await homePage.selectCurrency(currency);
     
 });
 
@@ -36,7 +42,7 @@ When(/^I enter valid user email$/, async function () {
     await signPage.enterEmail();
 });
 
-When(/^click on "GET STARTED" button$/, async function () {
+When(/^click on GET STARTED button$/, async function () {
     await passwordPage.getStarted();
 });
 
@@ -44,11 +50,11 @@ When(/^I enter valid password$/, async function () {
     await passwordPage.enterPassword();
 });
 
-When(/^click on "Create Account" button And main page is opened$/, async function () {
+When(/^click on CREATE ACCOUNT button$/, async function () {
     mainPage.createAccount();
 });
 
-When(/^I click on "My Dashboard" button under account menu$/, async function () {
+When(/^I click on MY DASHBOARD button in Main page under account menu$/, async function () {
     await mainPage.pageIsLoaded(); 
     if (await mainPage.firstVersion() === true ) {
         await dashboardPage.mainPageFirstVersion();
@@ -57,8 +63,11 @@ When(/^I click on "My Dashboard" button under account menu$/, async function () 
     };    
 });
 
-Then(/^"My Dashboard" page is opened And correct value is prefilled in email verification placeholder$/, async function () { 
+Then(/^correct value is prefilled in email verification placeholder in My Dashboard page$/, async function () { 
     await dashboardPage.assertEmail();
 });
 
 
+//papildinat ReadMe (Glbal dependencies, npm install)
+//debug.log nevajag github
+//iztirit git lokalo cache (ja debug.log nedzesas ara no github)

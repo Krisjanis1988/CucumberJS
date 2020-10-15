@@ -18,8 +18,8 @@ class mainPage extends BasePage {
     }
 
     async firstVersion() {
-        var checkElement = await driver.findElements(By.css(PopUp));
-        if(checkElement.length != 0) {
+        const checkElementIs = await driver.findElements(By.css(PopUp));
+        if(checkElementIs.length != 0) {
             return true;
         } else {
             return false;
