@@ -10,7 +10,7 @@ const currentAccount = "current_account";
 const myDashboard = ".profile_menu__item--mydashboard";
 const currentAccountSecond = ".bui-avatar--text";
 const manageAccount = "Manage account";
-const myDashboardSecond = "My dashboard";
+const myDashboardSecond = 'a[data-trackname="Dashboard"]';
 const emailField = ".email-confirm-banner__email-text";
 const getEmailFieldValue = "value";
 
@@ -25,7 +25,7 @@ class dashboardPage extends BasePage {
     async mainPageSecondVersion() {
         await driver.findElement(By.css(currentAccountSecond)).click();
         await driver.findElement(By.linkText(manageAccount)).click();
-        await driver.wait(until.elementLocated(By.partialLinkText(myDashboardSecond)), 10000)
+        await driver.wait(until.elementLocated(By.css(myDashboardSecond)), 10000)
         .then(element => element.click());
     }
 
