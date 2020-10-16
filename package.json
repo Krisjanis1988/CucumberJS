@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "./node_modules/.bin/cucumber-js"
+    "test": "./node_modules/.bin/cucumber-js --format json:./reports/cucumber-json-report.json"
   },
   "author": "Krisjanis",
   "license": "ISC",
